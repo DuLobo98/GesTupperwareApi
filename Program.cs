@@ -1,4 +1,5 @@
 using GestupperwareApi.Data;
+using GestupperwareApi.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 //DB connection
 builder.Services.AddDbContext<GestupperwareContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Default")));
+
+//Adding Services
+builder.Services.AddScoped<ITupperwareService, TupperwareService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
