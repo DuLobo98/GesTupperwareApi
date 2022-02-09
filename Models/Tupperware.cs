@@ -7,9 +7,9 @@ namespace GestupperwareApi.Models
         public int Quantity { get; set; }
         public double Price { get; set; }
         public string Color { get; set; }
-        public int IdCategory { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public int IdStorage { get; set; }
+        public int StorageId { get; set; }
         public Storage Storage { get; set; }
     }
 }
