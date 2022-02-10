@@ -1,5 +1,5 @@
 using AutoMapper;
-using GestupperwareApi.Dtos;
+using GestupperwareApi.Dtos.Tupperwares;
 using GestupperwareApi.Models;
 
 namespace GestupperwareApi.Profiles
@@ -8,7 +8,7 @@ namespace GestupperwareApi.Profiles
     {
         public TupperwareProfile()
         {
-            CreateMap<Tupperware, TupperwareDto>()
+            CreateMap<Tupperware, ViewTupperwareDto>()
                 .ForMember(
                     dest => dest.Id,
                     opt => opt.MapFrom(src => $"{src.Id}")
@@ -30,7 +30,7 @@ namespace GestupperwareApi.Profiles
                     opt => opt.MapFrom(src => $"{src.Color}")
                 );
 
-            CreateMap<EditTupperwareDto, Tupperware>()
+            CreateMap<AddTupperwareDto, Tupperware>()
                 .ForMember(
                     dest => dest.Name,
                     opt => opt.MapFrom(src => $"{src.Name}")

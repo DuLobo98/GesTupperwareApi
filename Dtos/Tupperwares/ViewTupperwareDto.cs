@@ -1,6 +1,6 @@
-namespace GestupperwareApi.Dtos
+namespace GestupperwareApi.Dtos.Tupperwares
 {
-    public class TupperwareDto
+    public class ViewTupperwareDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

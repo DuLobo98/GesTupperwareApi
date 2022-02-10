@@ -1,12 +1,12 @@
-using GestupperwareApi.Dtos;
+using GestupperwareApi.Dtos.Tupperwares;
 using GestupperwareApi.Models;
 
 namespace GestupperwareApi.Services
 {
     public interface ITupperwareService
     {
-        Task<List<TupperwareDto>> GetAllAsync();
-        Task<TupperwareDto> GetByIdAsync(int id);
+        Task<List<ViewTupperwareDto>> GetAllAsync();
+        Task<ViewTupperwareDto> GetByIdAsync(int id);
         Task AddAsync(Tupperware tupperware);
         Task UpdateAsync(Tupperware tupperware);
         Task DeleteAsync(int id);
