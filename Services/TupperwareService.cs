@@ -1,4 +1,6 @@
+using AutoMapper;
 using GestupperwareApi.Data;
+using GestupperwareApi.Dtos;
 using GestupperwareApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,10 +9,12 @@ namespace GestupperwareApi.Services
     public class TupperwareService : ITupperwareService
     {
         private readonly GestupperwareContext _context;
+        private readonly IMapper _mapper;
 
-        public TupperwareService(GestupperwareContext context)
+        public TupperwareService(GestupperwareContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public Task AddAsync(Tupperware tupperware)
@@ -23,9 +27,11 @@ namespace GestupperwareApi.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<Tupperware>> GetAllAsync()
+        public async Task<List<TupperwareDto>> GetAllAsync()
         {
-            return await _context.Tupperwares.ToListAsync();
+            var tupperwares = await _context.Tupperwares.Include(c => c.Category).Include(s => s.Storage).ToListAsync();
+            var mappedTupperwares = _mapper.Map<List<TupperwareDto>>(tupperwares);
+            return mappedTupperwares;
         }
 
         public Task<Tupperware> GetByIdAsync(int id)

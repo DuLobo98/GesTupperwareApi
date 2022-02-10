@@ -1,4 +1,4 @@
-using GestupperwareApi.Models;
+using GestupperwareApi.Dtos;
 using GestupperwareApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,7 +16,7 @@ namespace GestupperwareApi.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<IEnumerable<Tupperware>>> GetAllTupperwares()
+        public async Task<ActionResult<List<TupperwareDto>>> GetAllTupperwares()
         {
             var tupperwares = await _tupperwareService.GetAllAsync();
             return Ok(tupperwares);
