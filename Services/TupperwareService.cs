@@ -17,9 +17,10 @@ namespace GestupperwareApi.Services
             _mapper = mapper;
         }
 
-        public Task AddAsync(Tupperware tupperware)
+        public async Task AddAsync(Tupperware tupperware)
         {
-            throw new NotImplementedException();
+            _context.Tupperwares.Add(tupperware);
+            await _context.SaveChangesAsync();
         }
 
         public Task DeleteAsync(int id)

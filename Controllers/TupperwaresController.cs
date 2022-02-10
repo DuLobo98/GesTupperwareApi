@@ -1,4 +1,6 @@
+using AutoMapper;
 using GestupperwareApi.Dtos;
+using GestupperwareApi.Models;
 using GestupperwareApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +11,12 @@ namespace GestupperwareApi.Controllers
     public class TupperwaresController : ControllerBase
     {
         private readonly ITupperwareService _tupperwareService;
+        private readonly IMapper _mapper;
 
-        public TupperwaresController(ITupperwareService tupperwareService)
+        public TupperwaresController(ITupperwareService tupperwareService, IMapper mapper)
         {
             _tupperwareService = tupperwareService;
+            _mapper = mapper;
         }
 
         [HttpGet()]
@@ -31,6 +35,16 @@ namespace GestupperwareApi.Controllers
                 return NotFound();
             }
             return Ok(tupperware);
+        }
+
+
+
+        [HttpPost()]
+        public async Task<ActionResult> AddTupperware(EditTupperwareDto tuppeware)
+        {
+            var mappedTupperware = _mapper.Map<Tupperware>(tuppeware);
+            await _tupperwareService.AddAsync(mappedTupperware);
+            return Ok();
         }
     }
 }

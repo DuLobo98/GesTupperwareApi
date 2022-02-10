@@ -16,7 +16,8 @@ namespace GestupperwareApi.Profiles
                 .ForMember(
                     dest => dest.Name,
                     opt => opt.MapFrom(src => $"{src.Name}")
-                );
+                )
+                .ReverseMap();
         }
     }
 }
