@@ -1,4 +1,4 @@
-namespace GestupperwareApi.Dtos
+namespace GestupperwareApi.Dtos.Storages
 {
     public class StorageDto
     {

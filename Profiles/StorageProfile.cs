@@ -1,5 +1,5 @@
 using AutoMapper;
-using GestupperwareApi.Dtos;
+using GestupperwareApi.Dtos.Storages;
 using GestupperwareApi.Models;
 
 namespace GestupperwareApi.Profiles

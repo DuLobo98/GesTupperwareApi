@@ -1,3 +1,6 @@
+using GestupperwareApi.Dtos.Categories;
+using GestupperwareApi.Dtos.Storages;
+
 namespace GestupperwareApi.Dtos.Tupperwares
 {
     public class ViewTupperwareDto

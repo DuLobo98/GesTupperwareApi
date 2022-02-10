@@ -1,4 +1,4 @@
-namespace GestupperwareApi.Dtos
+namespace GestupperwareApi.Dtos.Categories
 {
     public class CategoryDto
     {
