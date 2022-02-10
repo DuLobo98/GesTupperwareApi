@@ -1,5 +1,5 @@
 using AutoMapper;
-using GestupperwareApi.Dtos;
+using GestupperwareApi.Dtos.Tupperwares;
 using GestupperwareApi.Models;
 using GestupperwareApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -20,14 +20,14 @@ namespace GestupperwareApi.Controllers
         }
 
         [HttpGet()]
-        public async Task<ActionResult<List<TupperwareDto>>> GetAllTupperwares()
+        public async Task<ActionResult<List<ViewTupperwareDto>>> GetAllTupperwares()
         {
             var tupperwares = await _tupperwareService.GetAllAsync();
             return Ok(tupperwares);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<TupperwareDto>> GetTupperware(int id)
+        public async Task<ActionResult<ViewTupperwareDto>> GetTupperware(int id)
         {
             var tupperware = await _tupperwareService.GetByIdAsync(id);
             if (tupperware == null)
@@ -37,13 +37,19 @@ namespace GestupperwareApi.Controllers
             return Ok(tupperware);
         }
 
-
-
         [HttpPost()]
-        public async Task<ActionResult> AddTupperware(EditTupperwareDto tuppeware)
+        public async Task<ActionResult> AddTupperware(AddTupperwareDto tupperware)
         {
-            var mappedTupperware = _mapper.Map<Tupperware>(tuppeware);
+            var mappedTupperware = _mapper.Map<Tupperware>(tupperware);
             await _tupperwareService.AddAsync(mappedTupperware);
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateTupperware(EditTupperwareDto tupperware, int id)
+        {
+            var mappedTupperware = _mapper.Map<Tupperware>(tupperware);
+            await _tupperwareService.UpdateAsync(mappedTupperware, id);
             return Ok();
         }
     }

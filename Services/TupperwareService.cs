@@ -1,6 +1,6 @@
 using AutoMapper;
 using GestupperwareApi.Data;
-using GestupperwareApi.Dtos;
+using GestupperwareApi.Dtos.Tupperwares;
 using GestupperwareApi.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -28,23 +28,30 @@ namespace GestupperwareApi.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<TupperwareDto>> GetAllAsync()
+        public async Task<List<ViewTupperwareDto>> GetAllAsync()
         {
             var tupperwares = await _context.Tupperwares.Include(c => c.Category).Include(s => s.Storage).ToListAsync();
-            var mappedTupperwares = _mapper.Map<List<TupperwareDto>>(tupperwares);
+            var mappedTupperwares = _mapper.Map<List<ViewTupperwareDto>>(tupperwares);
             return mappedTupperwares;
         }
 
-        public async Task<TupperwareDto> GetByIdAsync(int id)
+        public async Task<ViewTupperwareDto> GetByIdAsync(int id)
         {
             var tupperwares = await _context.Tupperwares.Include(c => c.Category).Include(s => s.Storage).FirstOrDefaultAsync(i => i.Id == id);
-            var mappedTupperwares = _mapper.Map<TupperwareDto>(tupperwares);
+            var mappedTupperwares = _mapper.Map<ViewTupperwareDto>(tupperwares);
             return mappedTupperwares;
         }
 
-        public Task UpdateAsync(Tupperware tupperware)
+        public async Task UpdateAsync(Tupperware tupperware, int id)
         {
-            throw new NotImplementedException();
+            bool hasAny = await _context.Tupperwares.AnyAsync(t => t.Id == id);
+
+            if (hasAny)
+            {
+                tupperware.Id = id;
+                _context.Update(tupperware);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
