@@ -34,9 +34,11 @@ namespace GestupperwareApi.Services
             return mappedTupperwares;
         }
 
-        public Task<Tupperware> GetByIdAsync(int id)
+        public async Task<TupperwareDto> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var tupperwares = await _context.Tupperwares.Include(c => c.Category).Include(s => s.Storage).FirstOrDefaultAsync(i => i.Id == id);
+            var mappedTupperwares = _mapper.Map<TupperwareDto>(tupperwares);
+            return mappedTupperwares;
         }
 
         public Task UpdateAsync(Tupperware tupperware)

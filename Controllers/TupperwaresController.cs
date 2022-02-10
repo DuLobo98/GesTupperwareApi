@@ -21,5 +21,16 @@ namespace GestupperwareApi.Controllers
             var tupperwares = await _tupperwareService.GetAllAsync();
             return Ok(tupperwares);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<TupperwareDto>> GetTupperware(int id)
+        {
+            var tupperware = await _tupperwareService.GetByIdAsync(id);
+            if (tupperware == null)
+            {
+                return NotFound();
+            }
+            return Ok(tupperware);
+        }
     }
 }
