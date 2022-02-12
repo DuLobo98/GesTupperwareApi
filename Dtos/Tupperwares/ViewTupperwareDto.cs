@@ -11,6 +11,6 @@ namespace GestupperwareApi.Dtos.Tupperwares
         public double Price { get; set; }
         public string Color { get; set; }
         public ViewCategoryDto Category { get; set; }
-        public StorageDto Storage { get; set; }
+        public ViewCategoryDto Storage { get; set; }
     }
 }

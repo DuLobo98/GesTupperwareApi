@@ -1,8 +1,10 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace GestupperwareApi.Dtos.Storages
 {
-    public class StorageDto
+    public class EditStorageDto
     {
-        public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace GestupperwareApi.Profiles
     {
         public StorageProfile()
         {
-            CreateMap<Storage, StorageDto>()
+            CreateMap<Storage, ViewStorageDto>()
                 .ForMember(
                     dest => dest.Id,
                     opt => opt.MapFrom(src => $"{src.Id}")
@@ -16,8 +16,12 @@ namespace GestupperwareApi.Profiles
                 .ForMember(
                     dest => dest.Name,
                     opt => opt.MapFrom(src => $"{src.Name}")
-                )
-                .ReverseMap();
+                );
+            CreateMap<EditStorageDto, Storage>()
+                .ForMember(
+                    dest => dest.Name,
+                    opt => opt.MapFrom(src => $"{src.Name}")
+                );
         }
     }
 }

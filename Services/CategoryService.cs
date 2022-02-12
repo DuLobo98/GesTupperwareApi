@@ -37,8 +37,8 @@ namespace GestupperwareApi.Services
 
         public async Task<List<ViewCategoryDto>> GetAllAsync()
         {
-            var categories = await _context.Categories.ToListAsync();
-            var mappedCategories = _mapper.Map<List<ViewCategoryDto>>(categories);
+            var category = await _context.Categories.ToListAsync();
+            var mappedCategories = _mapper.Map<List<ViewCategoryDto>>(category);
             return mappedCategories;
         }
 
@@ -58,7 +58,7 @@ namespace GestupperwareApi.Services
                 return false;
             }
             category.Id = id;
-            _context.Update(category);
+            _context.Categories.Update(category);
             await _context.SaveChangesAsync();
             return true;
         }
