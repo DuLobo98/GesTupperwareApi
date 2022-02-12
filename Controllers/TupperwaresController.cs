@@ -52,5 +52,12 @@ namespace GestupperwareApi.Controllers
             await _tupperwareService.UpdateAsync(mappedTupperware, id);
             return Ok();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteTupperware(int id)
+        {
+            await _tupperwareService.DeleteAsync(id);
+            return Ok();
+        }
     }
 }

@@ -23,9 +23,16 @@ namespace GestupperwareApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var tupperware = await _context.Tupperwares.FindAsync(id);
+
+            if (tupperware == null)
+            {
+                //Expetion
+            }
+            _context.Tupperwares.Remove(tupperware);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<ViewTupperwareDto>> GetAllAsync()
