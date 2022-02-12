@@ -23,16 +23,17 @@ namespace GestupperwareApi.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task<bool> DeleteAsync(int id)
         {
             var tupperware = await _context.Tupperwares.FindAsync(id);
 
             if (tupperware == null)
             {
-                //Expetion
+                return false;
             }
             _context.Tupperwares.Remove(tupperware);
             await _context.SaveChangesAsync();
+            return true;
         }
 
         public async Task<List<ViewTupperwareDto>> GetAllAsync()
@@ -49,16 +50,18 @@ namespace GestupperwareApi.Services
             return mappedTupperwares;
         }
 
-        public async Task UpdateAsync(Tupperware tupperware, int id)
+        public async Task<bool> UpdateAsync(Tupperware tupperware, int id)
         {
             bool hasAny = await _context.Tupperwares.AnyAsync(t => t.Id == id);
 
-            if (hasAny)
+            if (!hasAny)
             {
-                tupperware.Id = id;
-                _context.Update(tupperware);
-                await _context.SaveChangesAsync();
+                return false;
             }
+            tupperware.Id = id;
+            _context.Update(tupperware);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

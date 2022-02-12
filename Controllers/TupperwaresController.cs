@@ -29,18 +29,22 @@ namespace GestupperwareApi.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<ViewTupperwareDto>> GetTupperware(int id)
         {
+            //Valitade if the given id exists
             var tupperware = await _tupperwareService.GetByIdAsync(id);
             if (tupperware == null)
             {
                 return NotFound();
             }
+
             return Ok(tupperware);
         }
 
         [HttpPost()]
         public async Task<ActionResult> AddTupperware(AddTupperwareDto tupperware)
         {
+            //Mapping AddTupperwareDto to Tupperware
             var mappedTupperware = _mapper.Map<Tupperware>(tupperware);
+
             await _tupperwareService.AddAsync(mappedTupperware);
 
             //Location to return
@@ -50,22 +54,37 @@ namespace GestupperwareApi.Controllers
             //Object to return
             var returnTupperware = await _tupperwareService.GetByIdAsync(mappedTupperware.Id);
 
+            //Return a 201 code with location uri and a ViewTupperwareDto object
             return Created(locationUri, returnTupperware);
         }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateTupperware(EditTupperwareDto tupperware, int id)
         {
+            //Mapping EditTupperwareDto to Tupperware
             var mappedTupperware = _mapper.Map<Tupperware>(tupperware);
-            await _tupperwareService.UpdateAsync(mappedTupperware, id);
-            return Ok();
+
+            var updated = await _tupperwareService.UpdateAsync(mappedTupperware, id);
+
+            //Validating if Tupperware was updated or not exists
+            if (updated)
+            {
+                return Ok();
+            }
+            return NotFound();
         }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTupperware(int id)
         {
-            await _tupperwareService.DeleteAsync(id);
-            return Ok();
+            var deleted = await _tupperwareService.DeleteAsync(id);
+
+            //Validating if Tupperware was deleted or not exists
+            if (deleted)
+            {
+                return NoContent();
+            }
+            return NotFound();
         }
     }
 }
