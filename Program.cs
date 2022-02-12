@@ -11,6 +11,7 @@ builder.Services.AddDbContext<GestupperwareContext>(options => options.UseNpgsql
 
 //Adding Services
 builder.Services.AddScoped<ITupperwareService, TupperwareService>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
 
 //AutoMapper
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

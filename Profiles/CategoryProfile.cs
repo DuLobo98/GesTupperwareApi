@@ -8,7 +8,7 @@ namespace GestupperwareApi.Profiles
     {
         public CategoryProfile()
         {
-            CreateMap<Category, CategoryDto>()
+            CreateMap<Category, ViewCategoryDto>()
                 .ForMember(
                     dest => dest.Id,
                     opt => opt.MapFrom(src => $"{src.Id}")
@@ -16,8 +16,12 @@ namespace GestupperwareApi.Profiles
                 .ForMember(
                     dest => dest.Name,
                     opt => opt.MapFrom(src => $"{src.Name}")
-                )
-                .ReverseMap();
+                );
+            CreateMap<EditCategoryDto, Category>()
+                .ForMember(
+                    dest => dest.Name,
+                    opt => opt.MapFrom(src => $"{src.Name}")
+                );
         }
     }
 }

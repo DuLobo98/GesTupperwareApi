@@ -10,7 +10,7 @@ namespace GestupperwareApi.Dtos.Tupperwares
         public int Quantity { get; set; }
         public double Price { get; set; }
         public string Color { get; set; }
-        public CategoryDto Category { get; set; }
+        public ViewCategoryDto Category { get; set; }
         public StorageDto Storage { get; set; }
     }
 }
