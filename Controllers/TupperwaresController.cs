@@ -42,7 +42,15 @@ namespace GestupperwareApi.Controllers
         {
             var mappedTupperware = _mapper.Map<Tupperware>(tupperware);
             await _tupperwareService.AddAsync(mappedTupperware);
-            return Ok();
+
+            //Location to return
+            var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host.ToUriComponent()}";
+            var locationUri = baseUrl + "/api/Tupperwares/" + mappedTupperware.Id;
+
+            //Object to return
+            var returnTupperware = await _tupperwareService.GetByIdAsync(mappedTupperware.Id);
+
+            return Created(locationUri, returnTupperware);
         }
 
         [HttpPut("{id}")]
