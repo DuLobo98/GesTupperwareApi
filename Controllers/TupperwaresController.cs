@@ -2,6 +2,7 @@ using AutoMapper;
 using GestupperwareApi.Dtos.Tupperwares;
 using GestupperwareApi.Models;
 using GestupperwareApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestupperwareApi.Controllers
@@ -19,6 +20,7 @@ namespace GestupperwareApi.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet()]
         public async Task<ActionResult<List<ViewTupperwareDto>>> GetAllTupperwares()
         {
@@ -26,6 +28,7 @@ namespace GestupperwareApi.Controllers
             return Ok(tupperwares);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<ViewTupperwareDto>> GetTupperware(int id)
         {
@@ -39,6 +42,7 @@ namespace GestupperwareApi.Controllers
             return Ok(tupperware);
         }
 
+        [Authorize]
         [HttpPost()]
         public async Task<ActionResult> AddTupperware(AddTupperwareDto tupperware)
         {
@@ -58,6 +62,7 @@ namespace GestupperwareApi.Controllers
             return Created(locationUri, returnTupperware);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateTupperware(EditTupperwareDto tupperware, int id)
         {
@@ -74,6 +79,7 @@ namespace GestupperwareApi.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteTupperware(int id)
         {

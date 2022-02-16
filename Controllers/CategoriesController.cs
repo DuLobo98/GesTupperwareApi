@@ -2,6 +2,7 @@ using AutoMapper;
 using GestupperwareApi.Dtos.Categories;
 using GestupperwareApi.Models;
 using GestupperwareApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GestupperwareApi.Controllers
@@ -19,6 +20,7 @@ namespace GestupperwareApi.Controllers
             _mapper = mapper;
         }
 
+        [Authorize]
         [HttpGet()]
         public async Task<ActionResult<List<ViewCategoryDto>>> GetAllCategories()
         {
@@ -26,6 +28,7 @@ namespace GestupperwareApi.Controllers
             return Ok(categories);
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<ViewCategoryDto>> GetCategory(int id)
         {
@@ -39,6 +42,7 @@ namespace GestupperwareApi.Controllers
             return Ok(category);
         }
 
+        [Authorize]
         [HttpPost()]
         public async Task<ActionResult> AddCategory(EditCategoryDto category)
         {
@@ -58,6 +62,7 @@ namespace GestupperwareApi.Controllers
             return Created(locationUri, returnCategory);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateCategory(EditCategoryDto category, int id)
         {
@@ -74,6 +79,7 @@ namespace GestupperwareApi.Controllers
             return NotFound();
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteCategory(int id)
         {
