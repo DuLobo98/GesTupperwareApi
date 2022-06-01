@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace GestupperwareApi.Dtos.Categories
+namespace Gestupperware.Api.Dtos.Categories
 {
     public class EditCategoryDto
     {

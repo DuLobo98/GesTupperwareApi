@@ -1,7 +1,7 @@
-using GestupperwareApi.Models;
+using Gestupperware.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestupperwareApi.Data
+namespace Gestupperware.Api.Data
 {
     public class GestupperwareContext : DbContext
     {

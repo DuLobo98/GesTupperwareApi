@@ -1,6 +1,6 @@
 using System.Security.Claims;
-using GestupperwareApi.Data;
-using GestupperwareApi.Services;
+using Gestupperware.Api.Data;
+using Gestupperware.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;

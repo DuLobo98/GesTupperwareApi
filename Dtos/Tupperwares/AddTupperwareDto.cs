@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace GestupperwareApi.Dtos.Tupperwares
+namespace Gestupperware.Api.Dtos.Tupperwares
 {
     public class AddTupperwareDto
     {

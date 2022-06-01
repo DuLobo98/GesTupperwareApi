@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace GestupperwareApi.Models
+namespace Gestupperware.Api.Models
 {
     public class Category
     {

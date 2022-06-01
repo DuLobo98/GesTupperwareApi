@@ -1,10 +1,10 @@
 using AutoMapper;
-using GestupperwareApi.Data;
-using GestupperwareApi.Dtos.Tupperwares;
-using GestupperwareApi.Models;
+using Gestupperware.Api.Data;
+using Gestupperware.Api.Dtos.Tupperwares;
+using Gestupperware.Api.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestupperwareApi.Services
+namespace Gestupperware.Api.Services
 {
     public class TupperwareService : ITupperwareService
     {

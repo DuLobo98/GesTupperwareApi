@@ -1,8 +1,8 @@
 using AutoMapper;
-using GestupperwareApi.Dtos.Tupperwares;
-using GestupperwareApi.Models;
+using Gestupperware.Api.Dtos.Tupperwares;
+using Gestupperware.Api.Models;
 
-namespace GestupperwareApi.Profiles
+namespace Gestupperware.Api.Profiles
 {
     public class TupperwareProfile : Profile
     {

@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "GestupperwareApi": {
+    "Gestupperware.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

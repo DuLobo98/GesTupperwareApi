@@ -1,8 +1,8 @@
 using AutoMapper;
-using GestupperwareApi.Dtos.Categories;
-using GestupperwareApi.Models;
+using Gestupperware.Api.Dtos.Categories;
+using Gestupperware.Api.Models;
 
-namespace GestupperwareApi.Profiles
+namespace Gestupperware.Api.Profiles
 {
     public class CategoryProfile : Profile
     {

@@ -1,7 +1,7 @@
-using GestupperwareApi.Dtos.Tupperwares;
-using GestupperwareApi.Models;
+using Gestupperware.Api.Dtos.Tupperwares;
+using Gestupperware.Api.Models;
 
-namespace GestupperwareApi.Services
+namespace Gestupperware.Api.Services
 {
     public interface ITupperwareService
     {

@@ -1,7 +1,7 @@
-using GestupperwareApi.Dtos.Categories;
-using GestupperwareApi.Models;
+using Gestupperware.Api.Dtos.Categories;
+using Gestupperware.Api.Models;
 
-namespace GestupperwareApi.Services
+namespace Gestupperware.Api.Services
 {
     public interface ICategoryService
     {

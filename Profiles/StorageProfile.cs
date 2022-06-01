@@ -1,8 +1,8 @@
 using AutoMapper;
-using GestupperwareApi.Dtos.Storages;
-using GestupperwareApi.Models;
+using Gestupperware.Api.Dtos.Storages;
+using Gestupperware.Api.Models;
 
-namespace GestupperwareApi.Profiles
+namespace Gestupperware.Api.Profiles
 {
     public class StorageProfile : Profile
     {

@@ -1,11 +1,11 @@
 using AutoMapper;
-using GestupperwareApi.Dtos.Storages;
-using GestupperwareApi.Models;
-using GestupperwareApi.Services;
+using Gestupperware.Api.Dtos.Storages;
+using Gestupperware.Api.Models;
+using Gestupperware.Api.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GestupperwareApi.Controllers
+namespace Gestupperware.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -20,7 +20,7 @@ namespace GestupperwareApi.Controllers
             _mapper = mapper;
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet()]
         public async Task<ActionResult<List<ViewStorageDto>>> GetAllStorages()
         {
@@ -28,7 +28,7 @@ namespace GestupperwareApi.Controllers
             return Ok(storages);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<ViewStorageDto>> GetStorage(int id)
         {
@@ -42,7 +42,7 @@ namespace GestupperwareApi.Controllers
             return Ok(storage);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost()]
         public async Task<ActionResult> AddStorage(EditStorageDto storage)
         {
@@ -62,7 +62,7 @@ namespace GestupperwareApi.Controllers
             return Created(locationUri, returnStorage);
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateStorage(EditStorageDto storage, int id)
         {
@@ -79,7 +79,7 @@ namespace GestupperwareApi.Controllers
             return NotFound();
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteStorage(int id)
         {

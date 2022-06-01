@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace GestupperwareApi.Dtos.Storages
+namespace Gestupperware.Api.Dtos.Storages
 {
     public class EditStorageDto
     {
